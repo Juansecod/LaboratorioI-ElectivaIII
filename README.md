@@ -29,6 +29,6 @@ Se entrega el proyecto en archivo comprimido en .zip o en link de repositorio en
 Jorge Antonio García Cárdenas.
 
 ## Integrantes
-- Sarah Murcia Prado(@sarah-mp)
-- Juan Sebastian Rios Valencia(@Juansecod)
-- Sergio Vargas Marin(@Juansecod)
+- Sarah Murcia Prado([@sarah-mp](https://github.com/Juansecod)))
+- Juan Sebastian Rios Valencia([@Juansecod](https://github.com/Juansecod))
+- Sergio Vargas Marin([@](https://github.com/)))
