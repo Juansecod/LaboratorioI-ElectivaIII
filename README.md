@@ -31,4 +31,4 @@ Jorge Antonio García Cárdenas.
 ## Integrantes
 - Sarah Murcia Prado([@sarah-mp](https://github.com/sarah-mp))
 - Juan Sebastian Rios Valencia([@Juansecod](https://github.com/Juansecod))
-- Sergio Vargas Marin([@](https://github.com/)))
+- Sergio Vargas Marin([@sergiova123](https://github.com/sergiova123))
