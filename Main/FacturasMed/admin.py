@@ -1,5 +1,5 @@
 from django.contrib import admin
-from .models import Usuario, Servicio, Contrato
+from .models import Usuario, Servicio, Contrato, Factura
 
 # Register your models here.
 class UsuarioAdmin(admin.ModelAdmin):
@@ -18,7 +18,14 @@ admin.site.register(Servicio, ServicioAdmin)
 
 class ContratoAdmin(admin.ModelAdmin):
     list_display = ["id", "usuario", "servicio", "fecha_creacion"]
-    search_fields =["usuario__nombre", "usuario__apellidos","servicio__nombre"]
+    search_fields =[]
     list_filter = ["fecha_creacion"]
 
 admin.site.register(Contrato, ContratoAdmin)
+
+class FacturaAdmin(admin.ModelAdmin):
+    list_display = ["id", "monto", "pagado", "fecha_emision", "fecha_vencimiento", "contrato"]
+    search_fields =[]
+    list_filter = ["pagado", "fecha_emision", "fecha_vencimiento"]
+
+admin.site.register(Factura, FacturaAdmin)

@@ -1,4 +1,5 @@
 from django.db import models
+import datetime
 
 # Create your models here.
 class Usuario(models.Model):
@@ -34,4 +35,13 @@ class Contrato(models.Model):
         return f"Contrato #: {id}\nUsuario: {self.usuario.nombre}\nTipo Servicio: {self.servicio.nombre}"
 
 class Factura(models.Model):
-    pass
+    monto = models.FloatField(blank = False, null  = False, verbose_name = "Monto")
+    pagado = models.BooleanField(default = False, verbose_name="Fue Pagada")
+    fecha_emision = models.DateTimeField(auto_now_add=True, verbose_name = "Fecha de Emisión")
+    fecha_vencimiento = models.DateTimeField(blank=True, null = True, verbose_name = "Fecha de Vencimiento")
+    contrato = models.ForeignKey(Contrato, on_delete = models.PROTECT)
+    
+    def save(self, *args, **kwargs):
+        if not self.fecha_vencimiento:
+            self.fecha_vencimiento = datetime.datetime.now() + datetime.timedelta(weeks=5)
+        super().save(*args, **kwargs)
