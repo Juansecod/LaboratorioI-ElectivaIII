@@ -1,0 +1,49 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sistema de Facturación de Servicios Públicos de Medellín</title>
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="{% static 'css/styles.css' %}"> <!-- Tu archivo CSS adicional -->
+</head>
+<body>
+    {% if messages %}
+        <div class="container">
+            {% for message in messages %}
+                <div class="alert alert-{{ message.tags }}">{{ message }}</div>
+            {% endfor %}
+        </div>
+    {% endif %}
+
+    <header class="bg-primary text-white text-center py-4">
+        <h1>Sistema de Facturación de Servicios Públicos de Medellín</h1>
+        <nav>
+            <a class="btn btn-light my-2" href="{% url 'template_base' %}">Inicio</a>
+            <a class="btn btn-light my-2" href="{% url 'registrarse' %}">Registrarse</a>
+            <a class="btn btn-light my-2" href="{% url 'iniciar_sesion' %}">Iniciar Sesión</a>
+        </nav>
+    </header>
+
+    <main class="container my-4">
+        {% block content %}
+        
+        <!-- Contenedor para la imagen centrada -->
+        <div class="text-center my-4">
+            <img src="{% static 'img/image2.jpeg' %}" alt="NUESTROS SERVICIOS" class="img-fluid" width="800" height="auto">
+        </div>
+
+        {% endblock %}
+    </main>
+
+    <footer class="bg-primary text-white text-center py-2">
+        <p>&copy; {{ current_year }} Sistema de Facturación de Servicios Públicos de Medellín</p>
+    </footer>
+
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.2/dist/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+</body>
+</html>
