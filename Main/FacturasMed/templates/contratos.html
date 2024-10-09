@@ -1,0 +1,20 @@
+{% extends "template_base.html" %}
+
+{% block content %}
+    <div class="container">
+        <div class="container d-flex justify-content-between">
+            <h2>Mis Contratos</h2>
+            <a href="{% url 'crear_contrato' %}"><button class="btn btn-success">Crear Contrato</button></a>
+        </div>
+        {% if contratos %} 
+            {% for contrato in contratos %}
+                {{contrato}}
+            {% endfor %}
+        {% else %}
+            <span class="d-flex flex-column align-items-center justify-content-center">
+                <i class="fa-solid fa-business-time icono-sin-contratos"></i>
+                <p class="my-2">Ups! Parece que aún no tienes contratos creados</p>
+            </span>
+        {% endif %}
+    </div>
+{% endblock %}

@@ -7,6 +7,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Sistema de Facturación de Servicios Públicos de Medellín</title>
     <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css" rel="stylesheet">
     <link rel="stylesheet" href="{% static 'css/styles.css' %}"> <!-- Tu archivo CSS adicional -->
 </head>
 <body>
@@ -19,7 +20,7 @@
             <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
                 <div class="navbar-nav mr-auto">
                     <a class="nav-item nav-link {% if current_page == "inicio" %}active{% endif %}" href="{% url 'inicio' %}">Inicio</a>
-                    <a class="nav-item nav-link {% if current_page == "contratos" %}active{% endif %}" href="{% url 'inicio' %}">Contratos</a>
+                    <a class="nav-item nav-link {% if current_page == "contratos" %}active{% endif %}" href="{% url 'ver_contratos' %}">Contratos</a>
                     <a class="nav-item nav-link {% if current_page == "facturacion" %}active{% endif %}" href="{% url 'inicio' %}">Facturación</a>
                 </div>
                 {% if current_page != "iniciar_sesion" and request.session.usuario is None %}
