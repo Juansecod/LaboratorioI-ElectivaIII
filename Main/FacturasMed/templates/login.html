@@ -16,7 +16,10 @@
                 <label for="contrasena">Contraseña:</label>
                 <input type="password" class="form-control" id="contrasena" name="contrasena" required>
             </div>
-            <button type="submit" class="btn btn-primary">Iniciar Sesión</button>
+            <div class="d-flex justify-content-center d-flex align-items-center">
+                <a class="btn btn-primary my-2 mr-2" href="{% url 'registrarse' %}">Registrarse</a>
+                <button type="submit" class="btn btn-success my-2">Iniciar Sesión</button>
+            </div>
         </form>
     </div>
 </div>

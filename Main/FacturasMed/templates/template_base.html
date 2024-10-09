@@ -10,13 +10,26 @@
     <link rel="stylesheet" href="{% static 'css/styles.css' %}"> <!-- Tu archivo CSS adicional -->
 </head>
 <body>
-    <header class="bg-primary text-white text-center py-4">
-        <h1>Sistema de Facturación de Servicios Públicos de Medellín</h1>
-        <nav>
-            <a class="btn btn-light my-2" href="{% url 'template_base' %}">Inicio</a>
-            <a class="btn btn-light my-2" href="{% url 'registrarse' %}">Registrarse</a>
-            <a class="btn btn-light my-2" href="{% url 'iniciar_sesion' %}">Iniciar Sesión</a>
-        </nav>
+    <h1 class="text-center bg-primary text-light p-2">Sistema de Facturación de Servicios Públicos de Medellín</h1>
+    <header class="sticky-top">
+        <nav class="navbar navbar-expand-lg navbar-dark bg-primary">
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
+                <div class="navbar-nav mr-auto">
+                    <a class="nav-item nav-link {% if current_page == "inicio" %}active{% endif %}" href="{% url 'inicio' %}">Inicio</a>
+                    <a class="nav-item nav-link {% if current_page == "contratos" %}active{% endif %}" href="{% url 'inicio' %}">Contratos</a>
+                    <a class="nav-item nav-link {% if current_page == "facturacion" %}active{% endif %}" href="{% url 'inicio' %}">Facturación</a>
+                </div>
+                {% if current_page != "iniciar_sesion" and request.session.usuario is None %}
+                    <a class="nav-item btn btn-success" href="{% url 'iniciar_sesion' %}">Iniciar Sesión</a>
+                {% endif %}
+                {% if request.session.usuario %}
+                    <a class="nav-item btn btn-danger" href="{% url 'cerrar_sesion' %}">Cerrar Sesión</a>
+                {% endif %}
+            </div>
+          </nav>
     </header>
 
     <main class="container my-4">
@@ -26,6 +39,7 @@
         <div class="text-center my-4">
             <img src="{% static 'img/image2.jpeg' %}" alt="NUESTROS SERVICIOS" class="img-fluid" width="800" height="auto">
         </div>
+        {{request.session.usuario}}
 
         {% endblock %}
     </main>
