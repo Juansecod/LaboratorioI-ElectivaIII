@@ -7,9 +7,25 @@
             <a href="{% url 'crear_contrato' %}"><button class="btn btn-success">Crear Contrato</button></a>
         </div>
         {% if contratos %} 
-            {% for contrato in contratos %}
-                {{contrato}}
-            {% endfor %}
+            <table class="table">
+                <thead>
+                    <tr>
+                        <th scope="col">N°. Contrato</th>
+                        <th scope="col">Fecha Registro</th>
+                        <th>Tipo de Servicio</th>
+                        <th scope="col"></th>
+                </thead>
+                <tbody>
+                    {% for contrato in contratos %}
+                        <tr>
+                            <th scope="row">Contrato #{{contrato.id}}</td>
+                            <td>{{contrato.fecha_creacion}}</td>
+                            <td>{{contrato.servicio.nombre}}</td>
+                            <td><a class="btn btn-primary" href="#">Ver Facturas</a></td>
+                        </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
         {% else %}
             <span class="d-flex flex-column align-items-center justify-content-center">
                 <i class="fa-solid fa-business-time icono-sin-contratos"></i>
