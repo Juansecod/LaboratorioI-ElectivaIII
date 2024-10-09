@@ -10,14 +10,6 @@
     <link rel="stylesheet" href="{% static 'css/styles.css' %}"> <!-- Tu archivo CSS adicional -->
 </head>
 <body>
-    {% if messages %}
-        <div class="container">
-            {% for message in messages %}
-                <div class="alert alert-{{ message.tags }}">{{ message }}</div>
-            {% endfor %}
-        </div>
-    {% endif %}
-
     <header class="bg-primary text-white text-center py-4">
         <h1>Sistema de Facturación de Servicios Públicos de Medellín</h1>
         <nav>
@@ -37,6 +29,14 @@
 
         {% endblock %}
     </main>
+
+    {% if messages %}
+        {% for message in messages %}
+            <div class="position-absolute notification m-5 w-25 alert alert-{% if message.tags == 'error' %}danger{% else %}{{ message.tags }}{% endif %}" role="alert">
+                {{ message }}
+            </div>
+        {% endfor %}
+    {% endif %}
 
     <footer class="bg-primary text-white text-center py-2">
         <p>&copy; {{ current_year }} Sistema de Facturación de Servicios Públicos de Medellín</p>
