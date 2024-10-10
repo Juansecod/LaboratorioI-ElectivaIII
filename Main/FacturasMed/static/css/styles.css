@@ -107,3 +107,8 @@ footer {
 .icono-sin-contratos{
     font-size: 64px;
 }
+
+.px-personalizado{
+    padding-left: 30px;
+    padding-right: 30px;
+}

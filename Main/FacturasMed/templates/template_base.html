@@ -13,15 +13,14 @@
 <body>
     <h1 class="text-center bg-primary text-light p-2">Sistema de Facturación de Servicios Públicos de Medellín</h1>
     <header class="sticky-top">
-        <nav class="navbar navbar-expand-lg navbar-dark bg-primary">
+        <nav class="navbar navbar-expand-lg navbar-dark bg-primary mx-auto">
             <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon"></span>
             </button>
-            <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
-                <div class="navbar-nav mr-auto">
+            <div class="collapse navbar-collapse d-flex justify-content-between px-personalizado" id="navbarNavAltMarkup">
+                <div class="navbar-nav ">
                     <a class="nav-item nav-link {% if current_page == "inicio" %}active{% endif %}" href="{% url 'inicio' %}">Inicio</a>
                     <a class="nav-item nav-link {% if current_page == "contratos" %}active{% endif %}" href="{% url 'ver_contratos' %}">Contratos</a>
-                    <a class="nav-item nav-link {% if current_page == "facturacion" %}active{% endif %}" href="{% url 'inicio' %}">Facturación</a>
                 </div>
                 {% if current_page != "iniciar_sesion" and request.session.usuario is None %}
                     <a class="nav-item btn btn-success" href="{% url 'iniciar_sesion' %}">Iniciar Sesión</a>
