@@ -20,7 +20,9 @@
             <div class="collapse navbar-collapse d-flex justify-content-between px-personalizado" id="navbarNavAltMarkup">
                 <div class="navbar-nav ">
                     <a class="nav-item nav-link {% if current_page == "inicio" %}active{% endif %}" href="{% url 'inicio' %}">Inicio</a>
-                    <a class="nav-item nav-link {% if current_page == "contratos" %}active{% endif %}" href="{% url 'ver_contratos' %}">Contratos</a>
+                    {% if request.session.usuario %}
+                        <a class="nav-item nav-link {% if current_page == "contratos" %}active{% endif %}" href="{% url 'ver_contratos' %}">Contratos</a>
+                    {% endif %}
                 </div>
                 {% if current_page != "iniciar_sesion" and request.session.usuario is None %}
                     <a class="nav-item btn btn-success" href="{% url 'iniciar_sesion' %}">Iniciar Sesión</a>

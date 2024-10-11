@@ -4,6 +4,7 @@ body {
     padding: 0;
     background-color: #f4f4f4;
     overflow-x: hidden;
+    height: 100vh;
 }
 
 nav ul {
@@ -72,9 +73,12 @@ footer {
     padding: 10px 0;
     background-color: #00ff44;
     color: white;
-    position: absolute !important;
+    position: sticky;
     bottom: 0;
     width: 100%;
+    p{
+        margin: 0;
+    }
 }
 
 .reducida {

@@ -1,0 +1,51 @@
+{% extends "template_base.html" %}
+
+{% block content %}
+    <div class="container">
+        <div class="container d-flex justify-content-between">
+            <h2>Facturas del contrato #{{id_contrato}}</h2>
+            <a href="{% url 'ver_contratos' %}"><button class="btn btn-primary"><i class="fa-solid fa-arrow-left"></i> Volver</button></a>
+        </div>
+        {% if facturas %} 
+            <table class="table">
+                <thead>
+                    <tr>
+                        <th scope="col">N°. Factura</th>
+                        <th scope="col">Fecha Generada</th>
+                        <th scope="col">Fecha Vencimiento</th>
+                        <th scope="col">Monto</th>
+                        <th>Estado</th>
+                        <th scope="col"></th>
+                </thead>
+                <tbody>
+                    {% for factura in facturas %}
+                        <tr>
+                            <th scope="row">Factura #{{factura.id}}</td>
+                            <td>{{factura.fecha_emision}}</td>
+                            <td>{{factura.fecha_vencimiento}}</td>
+                            <td class="font-weight-bold">${{factura.monto}}</td>
+                            <td>
+                                {% if factura.pagado %}
+                                    <button type="button" class="btn btn-outline-secondary" disabled>
+                                        Pagada
+                                    </button>
+                                {% else %}
+                                    <a href="{% url 'pagar_factura' id_factura=factura.id id_contrato=id_contrato %}">
+                                        <button type="button" class="btn btn-success">
+                                            Pagar
+                                        </button>
+                                    </a>
+                                {% endif %}
+                            </td>
+                        </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+        {% else %}
+            <span class="d-flex flex-column align-items-center justify-content-center">
+                <i class="fa-solid fa-file-invoice-dollar icono-sin-contratos"></i>
+                <p class="my-2">Ups! Parece que aún no tienes facturas generadas</p>
+            </span>
+        {% endif %}
+    </div>
+{% endblock %}
