@@ -1,0 +1,43 @@
+/* Estilos para el carrusel y las imágenes */
+.your-carousel {
+    position: relative; /* Asegura que las flechas se coloquen en relación al carrusel */
+    margin: 0 auto; /* Centra el carrusel */
+}
+
+.your-carousel img {
+    width: 100%;  /* Las imágenes ocuparán el 100% del carrusel */
+    height: 40rem;  /* Establece una altura fija para el carrusel */
+    object-fit: cover;  /* Recorta las imágenes si es necesario, manteniendo la proporción */
+    border-radius: 10px;  /* Opcional: redondea las esquinas */
+}
+
+/* Flechas de navegación dentro del carrusel */
+.slick-prev, .slick-next {
+    width: 40px;
+    height: 40px;
+    z-index: 1;
+    color: white;
+    border-radius: 50%;  /* Las flechas serán redondas */
+    position: absolute;
+    top: 50%;  /* Centra verticalmente las flechas en el carrusel */
+    transform: translateY(-50%); /* Ajuste adicional para centrar perfectamente */
+}
+
+/* Posición de la flecha anterior (izquierda) */
+.slick-prev {
+    left: 10px;  /* Ajusta la distancia del borde izquierdo */
+}
+
+/* Posición de la flecha siguiente (derecha) */
+.slick-next {
+    right: 10px;  /* Ajusta la distancia del borde derecho */
+}
+
+/* Personaliza el contenido de las flechas */
+.slick-prev:before, .slick-next:before {
+    font-size: 24px;  /* Tamaño de las flechas */
+    color: rgb(36, 165, 159);  /* Color de las flechas */
+}
+
+
+

@@ -72,7 +72,7 @@ footer {
     padding: 10px 0;
     background-color: #00ff44;
     color: white;
-    position: absolute !important;
+    position: fixed !important;
     bottom: 0;
     width: 100%;
 }
