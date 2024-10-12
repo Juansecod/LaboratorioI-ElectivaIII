@@ -1,10 +1,13 @@
+from django.urls import reverse
 from django.shortcuts import render, redirect
 from django.contrib.auth.hashers import make_password, check_password
 from django.contrib import messages
-from .models import Usuario, Contrato, Servicio
+from .models import Usuario, Contrato, Servicio, Factura
 from .utils import validar_sesion
 
 def inicio(request):
+    if not request.session.get('usuario',None):
+        return redirect('iniciar_sesion')
     return render(request, "template_base.html", {"current_page":"inicio"})
     
 def registrarse(request):
@@ -39,7 +42,7 @@ def registrarse(request):
         messages.success(request, "Registro exitoso. Se ha inicado una sesión automaticamente")
         return redirect('iniciar_sesion')
 
-    return render(request, 'register.html', {"current_page": "iniciar_sesion"})
+    return render(request, 'register.html', {"current_page": "registro"})
 
 def iniciar_sesion(request):
     if request.method == 'POST':
@@ -104,3 +107,39 @@ def crear_contrato(request):
         print(e)
         messages.error(request, "Ups!, algo salio mal...")
         return redirect('crear_contrato')
+    
+def ver_facturas(request, id_contrato = None):
+    sesion = validar_sesion(request)
+    if sesion is not True:
+        return sesion
+    contexto = {"current_page": "contratos", "id_contrato": id_contrato}
+    if(id_contrato is None):
+        messages.warning(request, "Tienes que indicar un id de contrato...")
+        return redirect('ver_contratos')
+    try:
+        facturas = Factura.objects.filter(contrato_id = id_contrato).order_by("pagado", "fecha_vencimiento").values()
+        contexto["facturas"] = facturas
+        return render(request, 'facturas.html', contexto)
+    except Exception as e:
+        print(e)
+        messages.error(request, "Ups, ha ocurrido un error...")
+        return redirect('ver_contratos')
+    
+def pagar_factura(request, id_factura = None, id_contrato = None):
+    sesion = validar_sesion(request)
+    if sesion is not True:
+        return sesion
+    url = reverse('ver_facturas', args=[id_contrato])
+    if(id_factura is None):
+        messages.warning(request, "Tienes que indicar un id de factura...")
+        return redirect(url)
+    try:
+        factura = Factura.objects.get(id = id_factura)
+        factura.pagado = True
+        factura.save()
+        messages.success(request, f"Factura #{factura.id} pagada correctamente")
+        return redirect(url)
+    except Exception as e:
+        print(e)
+        messages.error(request, "Ups, ha ocurrido un error...")
+        return redirect(url)

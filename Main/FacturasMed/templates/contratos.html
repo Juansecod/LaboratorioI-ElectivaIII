@@ -21,7 +21,7 @@
                             <th scope="row">Contrato #{{contrato.id}}</td>
                             <td>{{contrato.fecha_creacion}}</td>
                             <td>{{contrato.servicio.nombre}}</td>
-                            <td><a class="btn btn-primary" href="#">Ver Facturas</a></td>
+                            <td><a class="btn btn-primary" href="{% url "ver_facturas" contrato.id %}">Ver Facturas</a></td>
                         </tr>
                     {% endfor %}
                 </tbody>
