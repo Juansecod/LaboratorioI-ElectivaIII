@@ -6,7 +6,7 @@
 
 .your-carousel img {
     width: 100%;  /* Las imágenes ocuparán el 100% del carrusel */
-    height: 40rem;  /* Establece una altura fija para el carrusel */
+    height: 28rem;  /* Establece una altura fija para el carrusel */
     object-fit: cover;  /* Recorta las imágenes si es necesario, manteniendo la proporción */
     border-radius: 10px;  /* Opcional: redondea las esquinas */
 }
